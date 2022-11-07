@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import {Error,Homepage,Capsules,Capsulepopup, Capsulesearch} from "./Pages";
+import {Header} from "./components";
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Header />
+    <Routes>
+     <Route path="/" element={<Homepage />} /> 
+     <Route path="/capsules" element={<Capsules />} />
+     <Route path="/capsules/:id" element={<Capsulepopup />} />
+     <Route path="/capsulessearch" element={<Capsulesearch />} />
+     <Route path="*" element={<Error />} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
